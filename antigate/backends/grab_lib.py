@@ -10,12 +10,12 @@ class Http(object):
 
     def get_response_body(self):
         if PY2 is True:
-            return self.grab.response.body
-        return self.grab.doc.response.body.decode('utf-8')
+            return self.grab.body
+        return self.grab.doc.body.decode('utf-8')
 
     def request(self, url):
         self.grab.go(url)
-        return self.grab.doc.response.code, self.get_response_body()
+        return self.grab.doc.code, self.get_response_body()
 
     def setup(self, **kwargs):
         self.grab.setup(**kwargs)
